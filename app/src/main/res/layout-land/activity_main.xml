@@ -17,15 +17,13 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginHorizontal="@dimen/margin_text"
         android:layout_marginTop="@dimen/margin"
-        android:fontFamily="@font/simpler"
         android:padding="@dimen/padding_text"
-        android:textColor="@color/black"
         android:textSize="@dimen/text_size" />
 
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin_top"
         android:columnCount="4"
         android:padding="@dimen/padding">
 
@@ -36,7 +34,8 @@
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
             android:layout_marginEnd="@dimen/margin_right"
-            android:text="@string/key_1" />
+            android:text="@string/key_1"
+            android:textColor="@color/black" />
 
         <Button
             android:id="@+id/key_2"

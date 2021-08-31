@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="CalcButton">
+        <item name="backgroundTint">@color/white_ting</item>
+        <item name="fontFamily">@font/simpler2</item>
+        <item name="android:textColor">@color/black_white</item>
+        <item name="android:textSize">@dimen/button_text_size</item>
+    </style>
+
+    <style name="CalcButton.Orange">
+        <item name="backgroundTint">@color/orange</item>
+        <item name="fontFamily">@font/alterna</item>
+    </style>
+</resources>
