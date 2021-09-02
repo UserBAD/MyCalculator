@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="CalcButton">
+    <style name="CalcButton" parent="Widget.MaterialComponents.Button">
         <item name="backgroundTint">@color/white_ting</item>
         <item name="fontFamily">@font/simpler2</item>
         <item name="android:textColor">@color/black_white</item>
@@ -12,4 +12,13 @@
         <item name="backgroundTint">@color/orange</item>
         <item name="fontFamily">@font/alterna</item>
     </style>
+
+    <style name="CalcTheme" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="materialButtonStyle">@style/CalcButton</item>
+    </style>
+
+    <style name="CalcThemeOrange" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="materialButtonStyle">@style/CalcButton.Orange</item>
+    </style>
+
 </resources>

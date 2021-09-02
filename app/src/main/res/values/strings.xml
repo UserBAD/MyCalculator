@@ -16,4 +16,8 @@
     <string name="key_minus">_</string>
     <string name="key_plus">+</string>
     <string name="key_equal">=</string>
+    <string name="key1">Theme_1</string>
+    <string name="key2">Theme_2</string>
+    <string name="key3">Calculator</string>
+    <string name="key_theme">theme</string>
 </resources>
