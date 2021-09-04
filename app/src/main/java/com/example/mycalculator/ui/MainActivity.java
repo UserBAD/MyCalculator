@@ -3,16 +3,20 @@ package com.example.mycalculator.ui;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.mycalculator.R;
+import com.example.mycalculator.StyleActivity;
 import com.example.mycalculator.domain.Calculation;
 
 public class MainActivity extends AppCompatActivity implements MainView {
     private TextView resultBox;
     private MainPresenter presenter;
     private static final String SAVE = "SAVE";
+    private MainPresenter.State save;
 
 
     @Override
@@ -24,11 +28,11 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
         presenter = new MainPresenter(this, new Calculation());
 
-//        if (savedInstanceState ==null){
-//            presenter= new MainPresenter();
-//        }else {
-//            presenter=savedInstanceState.getParcelable(SAVE);
-//        }
+        if (savedInstanceState == null) {
+//            save = new MainPresenter.State();
+        } else {
+            save = savedInstanceState.getParcelable(SAVE);
+        }
 
         findViewById(R.id.key_0).setOnClickListener(view -> {
             presenter.formingNumber(0);
@@ -93,6 +97,13 @@ public class MainActivity extends AppCompatActivity implements MainView {
         findViewById(R.id.key_equal).setOnClickListener(view -> {
             presenter.keyEqual();
         });
+        findViewById(R.id.key_theme).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, StyleActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -104,6 +115,6 @@ public class MainActivity extends AppCompatActivity implements MainView {
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putParcelable(SAVE, presenter);
+        outState.putParcelable(SAVE, save);
     }
 }

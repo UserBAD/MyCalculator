@@ -7,7 +7,7 @@ import android.os.Parcelable;
 import com.example.mycalculator.domain.Calculator;
 import com.example.mycalculator.domain.Operation;
 
-public class MainPresenter implements Parcelable {
+public class MainPresenter {
     private static final int STABLE = 10;
     private final MainView view;
     private final Calculator calculator;
@@ -17,29 +17,12 @@ public class MainPresenter implements Parcelable {
     private int realMultiplier = STABLE;
     private Operation operation;
 
-//    public MainPresenter(){}
 
     public MainPresenter(MainView view, Calculator calculator) {
         this.view = view;
         this.calculator = calculator;
     }
 
-//    protected MainPresenter(Parcel in) {
-//        digitOne = in.readDouble();
-//        digitTwo = in.readDouble();
-//    }
-
-//    public static final Creator<MainPresenter> CREATOR = new Creator<MainPresenter>() {
-//        @Override
-//        public MainPresenter createFromParcel(Parcel in) {
-//            return new MainPresenter(in);
-//        }
-//
-//        @Override
-//        public MainPresenter[] newArray(int size) {
-//            return new MainPresenter[size];
-//        }
-//    };
 
     public void formingNumber(int value) {
         if (digitTwo == null) {
@@ -103,15 +86,40 @@ public class MainPresenter implements Parcelable {
         calculation(Operation.EQUAL);
     }
 
+    public class State implements Parcelable {
 
-    @Override
-    public int describeContents() {
-        return 0;
+        protected State() {
+        }
+
+        protected State(Parcel in) {
+            digitOne = in.readDouble();
+            digitTwo = in.readDouble();
+        }
+
+        public final Creator<State> CREATOR = new Creator<State>() {
+            @Override
+            public State createFromParcel(Parcel in) {
+                return new State(in);
+            }
+
+            @Override
+            public State[] newArray(int size) {
+                return new State[size];
+            }
+        };
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(Parcel parcel, int i) {
+            parcel.writeDouble(digitOne);
+            parcel.writeDouble(digitTwo);
+
+        }
     }
 
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeDouble(digitOne);
-        parcel.writeDouble(digitTwo);
-    }
 }
+
